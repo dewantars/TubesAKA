@@ -4,17 +4,18 @@
  */
 package Code;
 
+import java.math.BigInteger;
 /**
  *
  * @author Dewanta Rahma Satria
  */
 public class FaktorialRekursif {
     
-    public static int faktorialRekursif(int n){
-        if (n<=1){
-            return 1;
-        }else{
-            return n * faktorialRekursif(n-1);
+    public static BigInteger faktorialRekursif(int n){
+        if (n <= 1) {
+            return BigInteger.ONE;
+        } else {
+            return BigInteger.valueOf(n).multiply(faktorialRekursif(n - 1));
         }
     }
 }

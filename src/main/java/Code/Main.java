@@ -4,11 +4,8 @@
 package Code;
 
 import java.util.Scanner;
+import java.math.BigInteger;
 
-/**
- *
- * @author Dewanta Rahma Satria
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -23,8 +20,9 @@ public class Main {
                 throw new IllegalArgumentException("Bilangan harus lebih besar dari 0.");
             }
 
-            int hasil = FaktorialIteratif.faktorialIteratif(orang) / FaktorialIteratif.faktorialIteratif(orang-barang);
-            int hasil2 = FaktorialRekursif.faktorialRekursif(orang) / FaktorialRekursif.faktorialRekursif(orang-barang);
+            BigInteger hasil = FaktorialIteratif.faktorialIteratif(orang).divide(FaktorialIteratif.faktorialIteratif(orang - barang));
+            BigInteger hasil2 = FaktorialRekursif.faktorialRekursif(orang).divide(FaktorialRekursif.faktorialRekursif(orang - barang));
+
             System.out.println("Hasil iteratif: " + hasil);
             System.out.println("Hasil Rekursif: " + hasil2);
         } catch (IllegalArgumentException e) {
@@ -34,6 +32,5 @@ public class Main {
         } finally {
             scan.close();
         }
-
     }
 }

@@ -3,16 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Code;
-
+import java.math.BigInteger;
 /**
  *
  * @author user
  */
 public class FaktorialIteratif {
-    public static int faktorialIteratif(int n) {
-        int result = 1;
+    public static BigInteger faktorialIteratif(int n) {
+        BigInteger result = BigInteger.ONE;
         while (n > 1) {
-            result = result * n;
+            result = result.multiply(BigInteger.valueOf(n));
             n -= 1;
         }
         return result;
