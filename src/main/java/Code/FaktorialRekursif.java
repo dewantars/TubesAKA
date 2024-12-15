@@ -10,7 +10,11 @@ package Code;
  */
 public class FaktorialRekursif {
     
-    public int faktorialRekursif(){
-        
+    public int faktorialRekursif(int n){
+        if (n<=1){
+            return 1;
+        }else{
+            return n * faktorialRekursif(n-1);
+        }
     }
 }
