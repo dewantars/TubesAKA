@@ -9,18 +9,13 @@ package Code;
  * @author user
  */
 public class FaktorialIteratif {
-    public static int getFactorialForLoop(int n) {
+    public static int faktorialIteratif(int n) {
         int result = 1;
-        if (n > 1) {
-            for (int i = 1; i <= n; i++) {
-                result = result * i;
-            }
-            return result;
+        while (n > 1) {
+            result = result * n;
+            n -= 1;
         }
-        else {
-            System.out.println("n has to be positive");
-            return result;
-        }
+        return result;
     }
 
 }
