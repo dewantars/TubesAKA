@@ -19,12 +19,8 @@ public class Main {
             if (orang <= 0 || barang <= 0) {
                 throw new IllegalArgumentException("Bilangan harus lebih besar dari 0.");
             }
-
-            BigInteger hasil = FaktorialIteratif.faktorialIteratif(orang).divide(FaktorialIteratif.faktorialIteratif(orang - barang));
-            BigInteger hasil2 = FaktorialRekursif.faktorialRekursif(orang).divide(FaktorialRekursif.faktorialRekursif(orang - barang));
-
-            System.out.println("Hasil iteratif: " + hasil);
-            System.out.println("Hasil Rekursif: " + hasil2);
+            System.out.println("Hasil iteratif: " + PermutasiIteratif.permutasi(orang, barang));
+            System.out.println("Hasil Rekursif: " + PermutasiRekursif.permutasi(orang, barang));
         } catch (IllegalArgumentException e) {
             System.out.println("Kesalahan: " + e.getMessage());
         } catch (Exception e) {

@@ -8,12 +8,11 @@ import java.math.BigInteger;
  *
  * @author user
  */
-public class FaktorialIteratif {
-    public static BigInteger faktorialIteratif(int n) {
+public class PermutasiIteratif {
+    public static BigInteger permutasi(int n, int r) {
         BigInteger result = BigInteger.ONE;
-        while (n > 1) {
-            result = result.multiply(BigInteger.valueOf(n));
-            n -= 1;
+        for (int i = 0; i<r; i++){
+            result = result.multiply(BigInteger.valueOf(n-i));
         }
         return result;
     }
