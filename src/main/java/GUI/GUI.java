@@ -84,6 +84,11 @@ public class GUI extends javax.swing.JFrame {
 
         jTextField2.setBackground(new java.awt.Color(221, 221, 221));
         jTextField2.setFont(new java.awt.Font("Gilroy-SemiBold", 0, 12)); // NOI18N
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Gilroy-SemiBold", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(30, 30, 30));
@@ -166,6 +171,10 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
