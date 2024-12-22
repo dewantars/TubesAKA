@@ -42,6 +42,9 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextOutput = new javax.swing.JTextPane();
         jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        RunningTime = new javax.swing.JTextPane();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -107,7 +110,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel5.setText("Masukkan Jumlah Elemen");
 
         jTextField_Elemen.setBackground(new java.awt.Color(221, 221, 221));
-        jTextField_Elemen.setText("jTextField1");
 
         jButton_Iteratif.setText("Iteratif");
         jButton_Iteratif.addActionListener(new java.awt.event.ActionListener() {
@@ -129,11 +131,21 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jTextOutput.setBackground(new java.awt.Color(221, 221, 221));
+        jTextOutput.setFont(new java.awt.Font("Gilroy-SemiBold", 0, 12)); // NOI18N
         jScrollPane1.setViewportView(jTextOutput);
 
         jLabel6.setFont(new java.awt.Font("Gilroy-SemiBold", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(30, 30, 30));
         jLabel6.setText("Hasil");
+
+        RunningTime.setBackground(new java.awt.Color(100, 204, 255));
+        RunningTime.setFont(new java.awt.Font("Gilroy-SemiBold", 0, 12)); // NOI18N
+        RunningTime.setForeground(new java.awt.Color(30, 30, 30));
+        jScrollPane2.setViewportView(RunningTime);
+
+        jLabel1.setFont(new java.awt.Font("Gilroy-SemiBold", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(30, 30, 30));
+        jLabel1.setText("Running Time:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -165,7 +177,11 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -187,10 +203,15 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jButton_Iteratif)
                     .addComponent(jButton_Rekursif))
                 .addGap(30, 30, 30)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel3);
@@ -215,9 +236,14 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButton_IteratifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IteratifActionPerformed
         // TODO add your handling code here:
+        long startIteratif = System.nanoTime();
         BigInteger result = PermutasiIteratif.permutasi(Integer.parseInt(jTextField_Unsur.getText()), Integer.parseInt(jTextField_Elemen.getText()));
+        long endIteratif = System.nanoTime();
         String value = result.toString();
         jTextOutput.setText(value);
+        long resultRt = endIteratif - startIteratif;
+        String rt = String.valueOf(resultRt);
+        RunningTime.setText(rt+" nanosecond");
     }//GEN-LAST:event_jButton_IteratifActionPerformed
 
     private void jButton_RekursifMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_RekursifMouseClicked
@@ -227,9 +253,14 @@ public class GUI extends javax.swing.JFrame {
     private void jButton_RekursifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RekursifActionPerformed
         // TODO add your handling code here:
         // TODO add your handling code here:
+        long startRekursif = System.nanoTime();
         BigInteger result = PermutasiRekursif.permutasi(Integer.parseInt(jTextField_Unsur.getText()), Integer.parseInt(jTextField_Elemen.getText()));
+        long endRekursif = System.nanoTime();
         String value = result.toString();
         jTextOutput.setText(value);
+        long resultRt = endRekursif - startRekursif;
+        String rt = String.valueOf(resultRt);
+        RunningTime.setText(rt + " nanosecond");
     }//GEN-LAST:event_jButton_RekursifActionPerformed
 
     /**
@@ -268,8 +299,10 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextPane RunningTime;
     private javax.swing.JButton jButton_Iteratif;
     private javax.swing.JButton jButton_Rekursif;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -279,6 +312,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel_topbar;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField_Elemen;
     private javax.swing.JTextField jTextField_Unsur;
     private javax.swing.JTextPane jTextOutput;
