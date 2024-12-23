@@ -19,33 +19,35 @@ import java.util.Arrays;
 public class Grafik {
 
     public static void main(String[] args) {
-        // Data ukuran input dan waktu eksekusi
-        int[] inputSizes = {1, 5, 10, 15, 20};
-        long[] executionTimes = new long[inputSizes.length];
-        long[] executionTimes2 = new long[inputSizes.length];
+        // Data ukuran input
+        int[] inputSizes = {1, 20, 40, 60, 80};
+        long[] IteratifTimes = new long[inputSizes.length];
+        long[] RekursifTimes = new long[inputSizes.length];
 
-        // Mengukur waktu eksekusi untuk setiap ukuran input
+        // Mengukur waktu eksekusi untuk kedua algoritma
         for (int i = 0; i < inputSizes.length; i++) {
             int size = inputSizes[i];
             long startTime = System.nanoTime();
-            
-            BigInteger result = PermutasiRekursif.permutasi(30, size);
-            
+            BigInteger result = PermutasiIteratif.permutasi(100, size);
             long endTime = System.nanoTime();
-            executionTimes[i] = (endTime - startTime) ; 
+            IteratifTimes[i] = (endTime - startTime);
             
             startTime = System.nanoTime();
+            result = PermutasiRekursif.permutasi(100, size);
+            endTime = System.nanoTime();
+            RekursifTimes[i] = (endTime - startTime);
         }
 
         // Membuat dataset
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (int i = 0; i < inputSizes.length; i++) {
-            dataset.addValue(executionTimes[i], "Execution Time", String.valueOf(inputSizes[i]));
+            dataset.addValue(IteratifTimes[i], "Iteratif Permutation", String.valueOf(inputSizes[i]));
+            dataset.addValue(RekursifTimes[i], "Rekursif Permutation", String.valueOf(inputSizes[i]));
         }
 
         // Membuat grafik
         JFreeChart lineChart = ChartFactory.createLineChart(
-                "Running Time vs Input Size",
+                "Algorithm Comparison: Running Time",
                 "Input Size",
                 "Time (ns)",
                 dataset,
@@ -62,5 +64,6 @@ public class Grafik {
         frame.pack();
         frame.setVisible(true);
     }
+
 }
 
