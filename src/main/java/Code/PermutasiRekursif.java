@@ -5,17 +5,20 @@
 package Code;
 
 import java.math.BigInteger;
+import java.util.Collections;
+import java.util.List;
 /**
  *
  * @author Dewanta Rahma Satria
  */
 public class PermutasiRekursif {
     
-    public static BigInteger permutasi(int n, int r){
+    public static BigInteger permutasi(int n, int r, List<Integer> list){
         if (r == 0) {
             return BigInteger.ONE;
         } else {
-            return BigInteger.valueOf(n).multiply(permutasi(n-1, r-1));
+            Collections.sort(list);
+            return BigInteger.valueOf(n).multiply(permutasi(n-1, r-1,list));
         }
     }
 }

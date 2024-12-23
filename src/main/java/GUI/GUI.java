@@ -6,6 +6,7 @@ package GUI;
 import Code.PermutasiIteratif;
 import Code.PermutasiRekursif;
 import java.math.BigInteger;
+import java.util.ArrayList;
 /**
  *
  * @author Dewanta Rahma Satria
@@ -49,13 +50,11 @@ public class GUI extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(100, 204, 255));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Aplikasi Perhitungan Permutasi");
 
         jPanel_topbar.setBackground(new java.awt.Color(200, 200, 200));
 
         jLabel_Close.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel_Close.setForeground(new java.awt.Color(0, 0, 0));
         jLabel_Close.setText("X");
         jLabel_Close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -64,7 +63,6 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jLabel_MInimize.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel_MInimize.setForeground(new java.awt.Color(0, 0, 0));
         jLabel_MInimize.setText("-");
         jLabel_MInimize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -91,11 +89,11 @@ public class GUI extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Gilroy-SemiBold", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Masukkan Jumlah Unsur");
 
         jTextField_Unsur.setBackground(new java.awt.Color(221, 221, 221));
         jTextField_Unsur.setFont(new java.awt.Font("Gilroy-SemiBold", 0, 12)); // NOI18N
+        jTextField_Unsur.setText("2");
         jTextField_Unsur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_UnsurActionPerformed(evt);
@@ -107,6 +105,12 @@ public class GUI extends javax.swing.JFrame {
         jLabel5.setText("Masukkan Jumlah Elemen");
 
         jTextField_Elemen.setBackground(new java.awt.Color(221, 221, 221));
+        jTextField_Elemen.setText("2");
+        jTextField_Elemen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_ElemenActionPerformed(evt);
+            }
+        });
 
         jButton_Iteratif.setText("Iteratif");
         jButton_Iteratif.addActionListener(new java.awt.event.ActionListener() {
@@ -230,6 +234,10 @@ public class GUI extends javax.swing.JFrame {
         String value = result.toString();
         jTextOutput.setText(value);
     }//GEN-LAST:event_jButton_RekursifActionPerformed
+
+    private void jTextField_ElemenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ElemenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_ElemenActionPerformed
 
     /**
      * @param args the command line arguments
