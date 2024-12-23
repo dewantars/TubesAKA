@@ -20,7 +20,7 @@ public class Grafik {
 
     public static void main(String[] args) {
         // Data ukuran input
-        int[] inputSizes = {1, 20, 40, 60, 80};
+        int[] inputSizes = {1, 10, 20, 40, 60, 80};
         long[] IteratifTimes = new long[inputSizes.length];
         long[] RekursifTimes = new long[inputSizes.length];
 
@@ -31,7 +31,7 @@ public class Grafik {
             BigInteger result = PermutasiIteratif.permutasi(100, size);
             long endTime = System.nanoTime();
             IteratifTimes[i] = (endTime - startTime);
-            
+
             startTime = System.nanoTime();
             result = PermutasiRekursif.permutasi(100, size);
             endTime = System.nanoTime();
@@ -41,13 +41,13 @@ public class Grafik {
         // Membuat dataset
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (int i = 0; i < inputSizes.length; i++) {
-            dataset.addValue(IteratifTimes[i], "Iteratif Permutation", String.valueOf(inputSizes[i]));
-            dataset.addValue(RekursifTimes[i], "Rekursif Permutation", String.valueOf(inputSizes[i]));
+            dataset.addValue(IteratifTimes[i], "Permutasi Iteratif", String.valueOf(inputSizes[i]));
+            dataset.addValue(RekursifTimes[i], "Permutasi Rekursif", String.valueOf(inputSizes[i]));
         }
 
-        // Membuat grafik
+        // Membuat grafik dengan marker
         JFreeChart lineChart = ChartFactory.createLineChart(
-                "Algorithm Comparison: Running Time",
+                "Perbandingan Algoritma: Running Time",
                 "Input Size",
                 "Time (ns)",
                 dataset,
@@ -64,6 +64,5 @@ public class Grafik {
         frame.pack();
         frame.setVisible(true);
     }
-
 }
 
