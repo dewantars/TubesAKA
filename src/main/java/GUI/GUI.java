@@ -50,11 +50,13 @@ public class GUI extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(100, 204, 255));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(30, 30, 30));
         jLabel4.setText("Aplikasi Perhitungan Permutasi");
 
         jPanel_topbar.setBackground(new java.awt.Color(200, 200, 200));
 
         jLabel_Close.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_Close.setForeground(new java.awt.Color(30, 30, 30));
         jLabel_Close.setText("X");
         jLabel_Close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -63,6 +65,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jLabel_MInimize.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_MInimize.setForeground(new java.awt.Color(30, 30, 30));
         jLabel_MInimize.setText("-");
         jLabel_MInimize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -89,6 +92,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Gilroy-SemiBold", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(30, 30, 30));
         jLabel2.setText("Masukkan Jumlah Unsur");
 
         jTextField_Unsur.setBackground(new java.awt.Color(221, 221, 221));
