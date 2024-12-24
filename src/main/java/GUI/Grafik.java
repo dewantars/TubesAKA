@@ -62,7 +62,7 @@ public class Grafik {
         frame.setVisible(true);
     }
     public static void main(String[] args) {
-        int[] inputSizes = {1, 10, 85, 255, 349, 400};
+        int[] inputSizes = {1, 10, 20, 50, 85, 255, 349, 400};
         long[][] times = ukurWaktu(inputSizes);
 
         // Tampilkan grafik
