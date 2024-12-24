@@ -6,7 +6,6 @@ package GUI;
 import Code.PermutasiIteratif;
 import Code.PermutasiRekursif;
 import java.math.BigInteger;
-import java.util.ArrayList;
 /**
  *
  * @author Dewanta Rahma Satria
@@ -271,10 +270,8 @@ public class GUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUI().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new GUI().setVisible(true);
         });
     }
 
