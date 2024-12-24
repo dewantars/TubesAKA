@@ -14,14 +14,10 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import javax.swing.*;
 
 public class Grafik {
+    
+    public static long[][] ukurWaktu(int[] inputSizes) {
+        long[][] times = new long[2][inputSizes.length]; // Index 0 untuk Iteratif, Index 1 untuk Rekursif
 
-    public static void main(String[] args) {
-        // Data ukuran input
-        int[] inputSizes = {85, 255, 349, 400}; 
-        long[] IteratifTimes = new long[inputSizes.length];
-        long[] RekursifTimes = new long[inputSizes.length];
-
-        // Mengukur waktu eksekusi untuk kedua algoritma
         for (int i = 0; i < inputSizes.length; i++) {
             int size = inputSizes[i];
 
@@ -29,23 +25,25 @@ public class Grafik {
             long startTime = System.nanoTime();
             PermutasiIteratif.permutasi(400, size);
             long endTime = System.nanoTime();
-            IteratifTimes[i] = (endTime - startTime);
+            times[0][i] = endTime - startTime;
 
             // Ukur waktu untuk algoritma rekursif
             startTime = System.nanoTime();
             PermutasiRekursif.permutasi(400, size);
             endTime = System.nanoTime();
-            RekursifTimes[i] = (endTime - startTime);
+            times[1][i] = endTime - startTime;
         }
 
-        // Membuat dataset untuk grafik
+        return times;
+    }
+    public static void tampilkanGrafik(int[] inputSizes, long[][] times) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
         for (int i = 0; i < inputSizes.length; i++) {
-            dataset.addValue(IteratifTimes[i], "Permutasi Iteratif", String.valueOf(inputSizes[i]));
-            dataset.addValue(RekursifTimes[i], "Permutasi Rekursif", String.valueOf(inputSizes[i]));
+            dataset.addValue(times[0][i], "Permutasi Iteratif", String.valueOf(inputSizes[i]));
+            dataset.addValue(times[1][i], "Permutasi Rekursif", String.valueOf(inputSizes[i]));
         }
 
-        // Membuat grafik
         JFreeChart lineChart = ChartFactory.createLineChart(
                 "Perbandingan Algoritma: Running Time",
                 "Ukuran Input (r)",
@@ -54,7 +52,6 @@ public class Grafik {
                 PlotOrientation.VERTICAL,
                 true, true, false);
 
-        // Menampilkan grafik
         ChartPanel chartPanel = new ChartPanel(lineChart);
         chartPanel.setPreferredSize(new java.awt.Dimension(800, 600));
 
@@ -63,5 +60,12 @@ public class Grafik {
         frame.add(chartPanel);
         frame.pack();
         frame.setVisible(true);
+    }
+    public static void main(String[] args) {
+        int[] inputSizes = {85, 255, 349, 400};
+        long[][] times = ukurWaktu(inputSizes);
+
+        // Tampilkan grafik
+        tampilkanGrafik(inputSizes, times);
     }
 }
