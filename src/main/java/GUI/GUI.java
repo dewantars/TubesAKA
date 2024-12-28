@@ -28,6 +28,7 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel_topbar = new javax.swing.JPanel();
@@ -42,6 +43,10 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextOutput = new javax.swing.JTextPane();
         jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Notifikasi = new javax.swing.JTextPane();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -96,7 +101,6 @@ public class GUI extends javax.swing.JFrame {
 
         jTextField_Unsur.setBackground(new java.awt.Color(221, 221, 221));
         jTextField_Unsur.setFont(new java.awt.Font("Gilroy-SemiBold", 0, 12)); // NOI18N
-        jTextField_Unsur.setText("2");
         jTextField_Unsur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_UnsurActionPerformed(evt);
@@ -108,7 +112,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel5.setText("Masukkan Jumlah Elemen");
 
         jTextField_Elemen.setBackground(new java.awt.Color(221, 221, 221));
-        jTextField_Elemen.setText("2");
         jTextField_Elemen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_ElemenActionPerformed(evt);
@@ -142,6 +145,9 @@ public class GUI extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(30, 30, 30));
         jLabel6.setText("Hasil");
 
+        Notifikasi.setBackground(new java.awt.Color(100, 204, 255));
+        jScrollPane2.setViewportView(Notifikasi);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -170,9 +176,10 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -187,7 +194,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jTextField_Unsur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jTextField_Elemen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -197,7 +204,9 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel3);
@@ -222,6 +231,11 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButton_IteratifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IteratifActionPerformed
         // TODO add your handling code here:
+        int x = Integer.parseInt(jTextField_Unsur.getText());
+        int y =  Integer.parseInt(jTextField_Elemen.getText());
+        if (x<y){
+            Notifikasi.setText("Error : Unsur harus lebih besar daripada elemen");
+        }
         BigInteger result = PermutasiIteratif.permutasi(Integer.parseInt(jTextField_Unsur.getText()), Integer.parseInt(jTextField_Elemen.getText()));
         String value = result.toString();
         jTextOutput.setText(value);
@@ -233,6 +247,11 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButton_RekursifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RekursifActionPerformed
         // TODO add your handling code here:
+        int x = Integer.parseInt(jTextField_Unsur.getText());
+        int y =  Integer.parseInt(jTextField_Elemen.getText());
+        if (x<y){
+            Notifikasi.setText("Error : Unsur harus lebih besar daripada elemen");
+        }
         BigInteger result = PermutasiRekursif.permutasi(Integer.parseInt(jTextField_Unsur.getText()), Integer.parseInt(jTextField_Elemen.getText()));
         String value = result.toString();
         jTextOutput.setText(value);
@@ -276,8 +295,10 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextPane Notifikasi;
     private javax.swing.JButton jButton_Iteratif;
     private javax.swing.JButton jButton_Rekursif;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -287,6 +308,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel_topbar;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField_Elemen;
     private javax.swing.JTextField jTextField_Unsur;
     private javax.swing.JTextPane jTextOutput;
